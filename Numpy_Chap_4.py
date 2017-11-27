@@ -73,7 +73,7 @@ arr = np.random.randn(6)
 arr.sort()
 
 # Multidimentional
-arr = np.random.randn(5,3)
+arr = np.random.randn(5, 3)
 
 # if I want to sort across rows, I would pass the axis = 1
 
@@ -82,8 +82,52 @@ arr.sort(axis=1)
 # Again, the same logic works, as before. We need to keep in mind
 # the elementwise philosophy of NumPy.
 
-# These methods are mutating. 
+# These methods are mutating.
 # The top level functions such as np.sort() are not mutating and
 # returne a copy of the array
 
 
+# Linear Algebra
+
+from numpy.linalg import inv, qr
+
+X = np.random.randn(5, 5)
+
+mat = X.T.dot(X)
+
+print(mat)
+print(inv(mat))
+
+print(mat.dot(inv(mat)))
+
+# QR decomposition of a matrix
+q, r = qr(mat)
+
+# the function dieg does 2 things (it is actially in numpy, not in numpy.linalg)
+
+# #1 if the argument is a 2 dimentional array (matix), than it returns a 1D array
+# containing the diagonal
+
+arr = np.arange(16).reshape(4, 4)
+
+print('the diagonal is: ', np.diag(arr))
+
+# #2 if the argument is a 1D, than it constructs a matrix, with the argument as the
+# main diagonal, and the rest is zero.
+
+new_arr = np.diag(np.array([1, 2, 3, 4]))
+
+print(new_arr)
+
+# Other comman functions of numpy.linalg are
+
+# dot
+# trace
+# det
+# eig
+# inv
+# pinv
+# qr
+# svd
+# solve - solve the linare system Ax =b, where A is a square matrix
+# lstsq - Compute the least square solution to Ax = b
