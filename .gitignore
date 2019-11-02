@@ -1,5 +1,0 @@
-#! /bin/bash
-my_plot
-my_plot.png
-*.npz
-*.npy
